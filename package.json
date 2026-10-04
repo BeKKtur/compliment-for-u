@@ -1,0 +1,5 @@
+{
+  "name": "very-love",
+  "private": true,
+  "scripts": { "dev": "python3 -m http.server 4174" }
+}

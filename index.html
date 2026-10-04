@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#17070d"><title>Для Амины — любовное письмо</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500&family=Marck+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=6">
+</head>
+<body class="locked">
+  <div class="grain"></div><div class="cursor-glow"></div>
+  <section class="opening" id="opening">
+    <p class="eyebrow">Для особенного человека</p>
+    <div class="envelope-stage" id="envelopeStage">
+      <div class="envelope-shadow"></div>
+      <div class="envelope" id="envelope">
+        <div class="env-back"></div>
+        <article class="letter-preview">
+          <span>Для <b data-recipient-for></b></span><h2>Ты — моё любимое<br><i>совпадение.</i></h2><small>Одна история. Два сердца.</small>
+        </article>
+        <div class="env-flap"></div><div class="env-left"></div><div class="env-right"></div><div class="env-bottom"></div>
+        <button class="seal" aria-label="Сургучная печать"><span>♥</span></button>
+      </div>
+    </div>
+    <p class="hint">Здесь кое-что для тебя</p><button class="open-btn" id="openBtn"><span>Открыть</span></button>
+  </section>
+
+  <main id="story" aria-hidden="true">
+    <section class="hero chapter">
+      <div class="orb orb-a"></div><div class="hero-copy reveal">
+        <p class="kicker">Личное послание</p><p class="to">Для <span data-recipient-for></span></p>
+        <h1 data-hero-title></h1><p class="lead" data-hero-text></p><span class="scroll-cue">Листай историю <i></i></span>
+      </div>
+      <figure class="hero-photo reveal parallax"><div class="photo-wrap"><img data-photo="main" alt="Наша особенная фотография"></div><figcaption>там, где началось «мы»</figcaption></figure>
+    </section>
+
+    <section class="beginning chapter">
+      <div class="section-no">I</div><div class="begin-copy reveal"><p class="kicker">Первая глава</p><h2>Всё началось<br>с одного <i>момента</i></h2></div>
+      <figure class="moment-photo reveal parallax"><img data-photo="second" alt="Момент знакомства"><div class="date"><small>Наша дата</small><strong data-date></strong></div></figure>
+      <p class="quote reveal" data-first-moment></p>
+    </section>
+
+    <section class="story-words chapter" id="storyWords"><div id="storyLines"></div></section>
+
+    <section class="single-memory chapter">
+      <figure class="memory-frame reveal parallax"><img data-photo="third" alt="Один из наших моментов"><figcaption>Некоторые моменты не хочется объяснять.<br><i>Их хочется помнить.</i></figcaption></figure>
+    </section>
+
+    <section class="typing-scene chapter"><div class="typing-inner reveal"><p class="kicker">Есть кое-что, что мне нравится в тебе...</p><p class="type-line"><span id="typeText"></span><i class="type-cursor"></i></p></div></section>
+
+    <section class="heart-section chapter">
+      <div class="heart-action reveal"><p class="kicker">Нажми, если хочешь узнать кое-что</p><button class="heart-button" id="heartBtn" type="button" aria-label="Открыть признание"><svg viewBox="0 0 100 90"><defs><linearGradient id="hg"><stop stop-color="#ef9da8"/><stop offset="1" stop-color="#8f1737"/></linearGradient></defs><path d="M50 85C36 70 7 52 7 28 7 7 34 0 50 19 66 0 93 7 93 28 93 52 64 70 50 85Z" fill="url(#hg)"/></svg></button></div>
+      <div class="heart-content"><h2 class="reveal">Ты стала моей любимой частью обычных дней.</h2><p class="heart-message">И теперь даже самый простой день становится особенным, если в нём есть ты.</p></div><div class="spark-field"></div>
+    </section>
+
+    <section class="warm-words chapter"><div class="quote-card reveal" id="quoteCard"><p class="kicker">Нажми, если тебе сегодня не хватало тёплых слов</p><blockquote id="randomQuote">Одно маленькое послание уже ждёт тебя.</blockquote><button class="gold-btn" id="quoteBtn">Получить послание</button><i class="quote-spark"></i></div></section>
+
+    <section class="do-you-know chapter"><div class="question-card reveal" id="knowCard"><p class="kicker">Между нами</p><h2>А ты знаешь, насколько ты мне дорога?</h2><div class="choice-row"><button data-know="yes">Знаю</button><button data-know="no">Не знаю</button></div><p class="answer" id="knowAnswer"></p></div></section>
+
+    <section class="game chapter"><header class="reveal"><p class="kicker">Маленькое испытание</p><h2>Поймай моё <i>сердце</i></h2><p>У тебя 10 секунд. Посмотрим, сможешь ли ты поймать моё сердце?</p></header><div class="game-shell reveal" id="gameShell"><div class="game-stats"><span id="score">Сердечки: 0</span><span id="timer">Осталось: 10 сек.</span></div><div class="game-field" id="gameField"><button class="catch-heart" id="catchHeart" aria-label="Поймать сердце"><svg viewBox="0 0 100 90"><path d="M50 85C36 70 7 52 7 28 7 7 34 0 50 19 66 0 93 7 93 28 93 52 64 70 50 85Z"/></svg></button><div class="game-cover" id="gameCover"><p id="gameResult">Готова?</p><button class="gold-btn" id="startGame">Начать</button></div></div><div class="gift-unlock" id="giftUnlock"><p>Ты кое-что разблокировала...</p><button class="text-btn" id="giftBtn">Открыть подарок <span>↗</span></button></div></div></section>
+
+    <section class="secret chapter">
+      <div class="secret-intro reveal"><p class="kicker">Только для тебя</p><h2>Я оставил тебе <i>письмо</i></h2><button id="readBtn" type="button" class="text-btn"><span class="read-label">Прочитать</span> <span class="read-icon">↗</span></button></div>
+      <div class="paper" id="paper"><div class="paper-fold"></div><div class="paper-closed"><span>Для тебя</span><i>♥</i><small>личное письмо</small></div><div class="paper-content"><div data-letter></div><strong class="signature" data-sender></strong></div></div>
+    </section>
+
+    <section class="last-question chapter"><div class="last-card reveal" id="lastCard"><div class="future-prompt"><p class="kicker">И последний вопрос...</p><h2>Будешь дальше создавать со мной наши маленькие истории?</h2><button type="button" id="yesFuture" class="future-yes">Конечно ♥</button></div><div class="future-result" aria-live="polite"><h3>Тогда продолжение следует...</h3><p>И это только начало нашей истории.</p><small>С любовью, <span data-sender></span> ♥</small></div><div class="celebration"></div></div></section>
+
+    <section class="final chapter"><div class="final-glow"></div><div class="final-copy"><p class="final-line reveal">И если бы всё началось сначала...</p><p class="final-line reveal">Из миллионов людей</p><p class="final-line reveal">из миллионов случайностей</p><h2 class="reveal" data-final></h2><span class="mini-heart">♥</span><p>С любовью, <b data-sender></b></p></div></section>
+  </main>
+
+  <button class="music" id="musicBtn" aria-label="Включить музыку"><span>♫</span><i></i><i></i><i></i></button>
+  <audio id="audio" loop preload="none"></audio>
+  <dialog class="gift-dialog" id="giftDialog"><button class="dialog-close" aria-label="Закрыть">×</button><span>Твой приз</span><h3>Одно объятие.</h3><p>Срок действия: <b>бессрочно</b>.<br>Количество использований: <b>не ограничено</b>.</p><small>Подарочный сертификат № ♥</small></dialog>
+  <script src="script.js"></script>
+</body></html>
