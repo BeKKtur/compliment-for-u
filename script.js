@@ -68,9 +68,9 @@ const opening=$('#opening'), story=$('#story'), openBtn=$('#openBtn');
 openBtn.addEventListener('click',()=>{
   openBtn.disabled=true;
   opening.classList.add('opened');
-  const desktop=matchMedia('(min-width: 900px)').matches;
-  setTimeout(()=>{document.body.classList.remove('locked');document.body.classList.add('ready');story.setAttribute('aria-hidden','false');$('#musicBtn').classList.add('visible')},desktop?4300:2850);
-  setTimeout(()=>opening.classList.add('complete'),desktop?5300:3900);
+  setTimeout(()=>opening.classList.add('letter-cleared'),3050);
+  setTimeout(()=>{document.body.classList.remove('locked');document.body.classList.add('ready');story.setAttribute('aria-hidden','false');$('#musicBtn').classList.add('visible')},4900);
+  setTimeout(()=>opening.classList.add('complete'),5900);
 });
 
 let pointerFrame=0;

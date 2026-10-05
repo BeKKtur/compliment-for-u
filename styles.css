@@ -85,6 +85,62 @@ main{transition:opacity .9s cubic-bezier(.22,.61,.36,1)}
 @media(max-width:760px){.future-yes{min-width:min(250px,78vw);min-height:58px}.future-result h3{font-size:clamp(3rem,15vw,5rem)}.future-result p{font-size:clamp(1.35rem,7vw,2rem)}.future-result small{font-size:1.25rem}.last-card.accepted .future-result{max-height:560px}}
 @media(prefers-reduced-motion:reduce){.future-prompt,.future-yes,.future-result,.future-result p,.future-result small,.last-card::after{transition-duration:.01ms!important;transition-delay:0s!important}}
 
+/* Physical envelope extraction: letter stays behind the front until fully clear */
+@keyframes letterExtractMobile{
+  0%{opacity:0;z-index:2;transform:translate3d(0,8%,0) rotateZ(0) scale(1)}
+  8%{opacity:1;z-index:2;transform:translate3d(0,4%,0) rotateZ(0) scale(1)}
+  62%{opacity:1;z-index:2;transform:translate3d(0,-112%,0) rotateZ(-.5deg) scale(.97)}
+  62.01%{opacity:1;z-index:8;transform:translate3d(0,-112%,0) rotateZ(-.5deg) scale(.97)}
+  100%{opacity:1;z-index:8;transform:translate3d(0,-76%,0) rotateZ(-1.2deg) scale(.98)}
+}
+@keyframes letterExtractDesktop{
+  0%{opacity:0;z-index:2;transform:translate3d(0,8%,0) rotateZ(0) scale(1)}
+  8%{opacity:1;z-index:2;transform:translate3d(0,4%,0) rotateZ(0) scale(1)}
+  62%{opacity:1;z-index:2;transform:translate3d(0,-112%,0) rotateZ(-.35deg) scale(.98)}
+  62.01%{opacity:1;z-index:8;transform:translate3d(0,-112%,0) rotateZ(-.35deg) scale(.98)}
+  100%{opacity:1;z-index:8;transform:translate3d(0,-58%,0) rotateZ(-.8deg) scale(1.02)}
+}
+@keyframes envelopeExitPhysical{to{transform:translate3d(0,24svh,0) scale(.82);filter:blur(10px);opacity:0}}
+.opened .letter-preview{transition:none;animation:letterExtractMobile 2.5s cubic-bezier(.36,.04,.18,1) 1.35s both}
+.opened .envelope{animation:envelopeExitPhysical .9s cubic-bezier(.4,0,.2,1) 4.7s forwards}
+.opening.opened{opacity:0;visibility:hidden;transition:background .5s ease,opacity .9s ease 4.85s,visibility 0s 5.75s}
+@media(min-width:900px){.opened .letter-preview{transition:none;animation:letterExtractDesktop 2.5s cubic-bezier(.36,.04,.18,1) 1.35s both}.opened .envelope{animation:envelopeExitPhysical .9s cubic-bezier(.4,0,.2,1) 4.7s forwards}.opening.opened{opacity:0;visibility:hidden;transition:background .5s ease,opacity .9s ease 4.85s,visibility 0s 5.75s}}
+
+/* Mobile rhythm and two-stage physical letter extraction */
+@keyframes letterLiftBehindPocket{
+  0%{opacity:0;transform:translate3d(0,8%,0) rotateZ(0) scale(1)}
+  10%{opacity:1;transform:translate3d(0,4%,0) rotateZ(0) scale(1)}
+  100%{opacity:1;transform:translate3d(0,-116%,0) rotateZ(-.45deg) scale(.97)}
+}
+@keyframes letterSettleAbovePocket{
+  0%{opacity:1;transform:translate3d(0,-116%,0) rotateZ(-.45deg) scale(.97)}
+  100%{opacity:1;transform:translate3d(0,-76%,0) rotateZ(-1.2deg) scale(.98)}
+}
+@media(max-width:768px){
+  .opening{padding-top:clamp(26px,5svh,48px);padding-bottom:10px}
+  .envelope-stage{position:relative;top:clamp(12px,2.6svh,24px)}
+  .opened .letter-preview{z-index:2;animation:letterLiftBehindPocket 1.7s cubic-bezier(.3,.02,.16,1) 1.35s both}
+  .opened.letter-cleared .letter-preview{z-index:8;animation:letterSettleAbovePocket .9s cubic-bezier(.22,.61,.36,1) both}
+  .env-left,.env-right,.env-bottom{backface-visibility:hidden;transform:translateZ(1px)}
+  .env-bottom{filter:drop-shadow(0 -1px 0 #6f1a2f)}
+
+  .chapter{min-height:auto;padding-top:clamp(64px,17vw,88px);padding-bottom:clamp(64px,17vw,88px)}
+  .hero{min-height:auto;padding-top:clamp(90px,24vw,125px);padding-bottom:clamp(72px,19vw,95px)}
+  .hero-photo{margin-top:clamp(45px,13vw,68px)}
+  .beginning{padding-top:clamp(88px,23vw,118px);padding-bottom:clamp(70px,18vw,94px)}
+  .story-words{padding-top:24px;padding-bottom:24px}
+  .story-line{min-height:44svh;padding:clamp(42px,12vw,64px) 0}
+  .story-line.story-climax{min-height:68svh;padding-block:70px}
+  .single-memory{min-height:82svh;padding-top:70px;padding-bottom:70px}
+  .typing-scene{min-height:72svh;padding-block:70px}.type-line{margin-top:8vh}
+  .heart-section{min-height:86svh;padding-block:72px}
+  .warm-words,.do-you-know,.last-question{min-height:78svh;padding-block:72px}
+  .game{min-height:auto;padding-top:82px;padding-bottom:82px}
+  .secret{min-height:auto;padding-top:82px;padding-bottom:82px;gap:48px}
+  .final{min-height:88svh;padding-top:90px;padding-bottom:90px}
+  .quote-card blockquote{margin:4vh auto}.question-card h2,.last-card h2{margin:3.5vh 0}
+}
+
 @media (max-width:768px){
   .secret{overflow:visible}
   .paper{
