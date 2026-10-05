@@ -64,6 +64,15 @@ $('#audio').src=loveConfig.music;
 document.title=`Для ${loveConfig.recipientNameFor} — любовное письмо`;
 $('#storyLines').innerHTML=loveConfig.storyTexts.map((t,i)=>`<p class="story-line reveal ${i===loveConfig.storyTexts.length-1?'story-climax':''}">${t}</p>`).join('');
 
+// Lightweight mobile-only botanical ornaments. SVG stays sharp on Retina displays.
+const ornamentSvgs={
+  branch:`<svg viewBox="0 0 150 230" aria-hidden="true"><path d="M20 220C55 165 61 92 126 18"/><path d="M52 165C30 154 23 133 25 113 48 121 59 137 52 165ZM72 124C96 119 111 101 116 82 92 83 76 98 72 124ZM91 83C72 70 68 52 73 34 92 45 99 61 91 83Z"/><circle cx="126" cy="18" r="3"/></svg>`,
+  sprig:`<svg viewBox="0 0 190 150" aria-hidden="true"><path d="M7 137C55 113 93 75 178 18"/><path d="M55 106C39 89 38 70 45 55 62 69 66 86 55 106ZM91 77C112 78 129 67 139 51 119 46 101 56 91 77ZM128 48C119 31 122 16 132 6 143 22 141 36 128 48Z"/><path d="M34 119c-13 1-23-5-28-15 13-3 23 2 28 15Z"/></svg>`,
+  bloom:`<svg viewBox="0 0 180 180" aria-hidden="true"><path d="M91 170C88 126 91 93 91 58"/><path d="M91 92C65 85 50 68 48 45 73 50 89 67 91 92ZM92 120C116 111 132 93 134 71 110 78 96 95 92 120Z"/><path d="M91 59c-17-8-27-22-21-34 6-11 18-7 22 4 5-12 18-15 23-3 5 13-7 26-24 33Z"/><circle cx="92" cy="42" r="6"/></svg>`,
+  flourish:`<svg viewBox="0 0 220 110" aria-hidden="true"><path d="M5 59c38-34 72-34 105 0s67 34 105 0"/><path d="M50 39c7-17 20-25 36-22-4 17-16 26-36 22ZM170 79c-8 17-21 24-37 20 5-17 18-25 37-20Z"/><circle cx="110" cy="59" r="4"/></svg>`
+};
+[['.story-words','branch'],['.typing-scene','sprig'],['.warm-words','bloom'],['.game','branch'],['.secret','flourish'],['.last-question','sprig']].forEach(([selector,type],index)=>{const section=$(selector);if(!section)return;const ornament=document.createElement('div');ornament.className=`mobile-ornament ornament-${type} ornament-${index%2?'right':'left'} reveal`;ornament.setAttribute('aria-hidden','true');ornament.innerHTML=ornamentSvgs[type];section.prepend(ornament)});
+
 const opening=$('#opening'), story=$('#story'), openBtn=$('#openBtn');
 openBtn.addEventListener('click',()=>{
   openBtn.disabled=true;
